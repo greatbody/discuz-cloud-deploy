@@ -1,0 +1,24 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: discuz
+  namespace: dev
+  labels:
+    app: discuz
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: discuz
+  template:
+    metadata:
+      labels:
+        app: discuz
+    spec:
+      containers:
+        - name: discuz
+          image: tencentci/discuz
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
